@@ -24,9 +24,9 @@ def lambda_handler(event, context):
     print(values)
     #sends event data to logs for debugging
     
-    s3.download_file('soil-monitoring-bucket', values, '/tmp/tempfile.csv')
+    s3.download_file('bucket-name', values, '/tmp/tempfile.csv')
     
-    s3.download_file('soil-monitoring-bucket', 'master/masterfile.csv', '/tmp/masterfile.csv')
+    s3.download_file('bucket-name', 'master/masterfile.csv', '/tmp/masterfile.csv')
     
     text1 = ""
     text2 = ""
@@ -48,7 +48,7 @@ def lambda_handler(event, context):
     append_list_as_row('/tmp/masterfile.csv', row_contents)
     #appends master csv file
     
-    upload_file('/tmp/masterfile.csv', 'soil-monitoring-bucket')
+    upload_file('/tmp/masterfile.csv', 'bucket-name')
     
     return {
         'statusCode': 200,
